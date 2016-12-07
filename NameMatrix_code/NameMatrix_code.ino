@@ -47,13 +47,18 @@ function maxInUse keeps track of this, just tell it how many max7219 you are
 using.
 */
 
-#define NAME TED
+//===============================================
+//                  Edit here
+
+char nameArr[] = "T d"; // Put your own name within the quotes!
+
+int maxInUse = 3;    //change this variable to set how many MAX7219's you'll use
+
+//===============================================
 
 int dataIn = 2;
 int load = 3;
 int clock = 4;
-
-int maxInUse = 3;    //change this variable to set how many MAX7219's you'll use
 
 int e = 0;           // just a variable
 
@@ -134,7 +139,6 @@ void maxOne(byte maxNr, byte reg, byte col) {
   digitalWrite(load,HIGH); 
 }
 
-
 void setup () {
 
   pinMode(dataIn, OUTPUT);
@@ -156,393 +160,467 @@ void setup () {
 }  
 
 void loop () {
-
-  letterY(1);
-  letterZ(2);
-  letterX(3);
+  char* x = nameArr;
+  int i;
+  for (i = 1; i <= maxInUse; i++){
+    displayLetter(i, *x);
+    x++;
+  }
   while(1);
 }
 
-void letterA(int position){
+void displayLetter(int maxPosition, char letter){
 
-  maxOne(position,7,B00111110); 
-  maxOne(position,6,B01111110);
-  maxOne(position,5,B11001000);
-  maxOne(position,4,B10001000);
-  maxOne(position,3,B11001000);
-  maxOne(position,2,B01111110);
-  maxOne(position,1,B00111110);
-  maxOne(position,8,B00000000);
+  if (letter > 90 && letter < 123){
+    letter = letter - 32;
+  }
+
+  switch (letter){
+    
+    case 'A' :
+      letterA(maxPosition);
+      break;
+    case 'B' :
+      letterB(maxPosition);
+      break;
+    case 'C' :
+      letterC(maxPosition);
+      break;
+    case 'D' :
+      letterD(maxPosition);
+      break;
+    case 'E' :
+      letterE(maxPosition);
+      break;
+    case 'F' :
+      letterF(maxPosition);
+      break;
+    case 'G' :
+      letterG(maxPosition);
+      break;
+    case 'H' :
+      letterH(maxPosition);
+      break;
+    case 'I' :
+      letterI(maxPosition);
+      break;
+    case 'J' :
+      letterJ(maxPosition);
+      break;
+    case 'K' :
+      letterK(maxPosition);
+      break;
+    case 'L' :
+      letterL(maxPosition);
+      break;
+    case 'M' :
+      letterM(maxPosition);
+      break;
+    case 'N' :
+      letterN(maxPosition);
+      break;
+    case 'O' :
+      letterO(maxPosition);
+      break;
+    case 'P' :
+      letterP(maxPosition);
+      break;
+    case 'Q' :
+      letterQ(maxPosition);
+      break;
+    case 'R' :
+      letterR(maxPosition);
+      break;
+    case 'S' :
+      letterS(maxPosition);
+      break;
+    case 'T' :
+      letterT(maxPosition);
+      break;
+    case 'U' :
+      letterU(maxPosition);
+      break;
+    case 'V' :
+      letterV(maxPosition);
+      break;
+    case 'W' :
+      letterW(maxPosition);
+      break;
+    case 'X' :
+      letterX(maxPosition);
+      break;
+    case 'Y' :
+      letterY(maxPosition);
+      break;
+    case 'Z' :
+      letterZ(maxPosition);
+      break;
+    default:
+      Heart(maxPosition);
+  }
+}
+
+void letterA(int maxPosition){
+
+  maxOne(maxPosition,7,B00111110); 
+  maxOne(maxPosition,6,B01111110);
+  maxOne(maxPosition,5,B11001000);
+  maxOne(maxPosition,4,B10001000);
+  maxOne(maxPosition,3,B11001000);
+  maxOne(maxPosition,2,B01111110);
+  maxOne(maxPosition,1,B00111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterB(int position){
+void letterB(int maxPosition){
 
-  maxOne(position,7,B01101100); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B10010010);
-  maxOne(position,4,B10010010);
-  maxOne(position,3,B10010010);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterC(int position){
-
-  maxOne(position,7,B01000100); 
-  maxOne(position,6,B11000110);
-  maxOne(position,5,B10000010);
-  maxOne(position,4,B10000010);
-  maxOne(position,3,B11000110);
-  maxOne(position,2,B01111100);
-  maxOne(position,1,B00111000);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B01101100); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B10010010);
+  maxOne(maxPosition,4,B10010010);
+  maxOne(maxPosition,3,B10010010);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterD(int position){
+void letterC(int maxPosition){
 
-  maxOne(position,7,B00111000); 
-  maxOne(position,6,B01111100);
-  maxOne(position,5,B11000110);
-  maxOne(position,4,B10000010);
-  maxOne(position,3,B10000010);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterE(int position){
-
-  maxOne(position,7,B10000010); 
-  maxOne(position,6,B10010010);
-  maxOne(position,5,B10010010);
-  maxOne(position,4,B10010010);
-  maxOne(position,3,B10010010);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B01000100); 
+  maxOne(maxPosition,6,B11000110);
+  maxOne(maxPosition,5,B10000010);
+  maxOne(maxPosition,4,B10000010);
+  maxOne(maxPosition,3,B11000110);
+  maxOne(maxPosition,2,B01111100);
+  maxOne(maxPosition,1,B00111000);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterF(int position){
+void letterD(int maxPosition){
 
-  maxOne(position,7,B10000000); 
-  maxOne(position,6,B10010000);
-  maxOne(position,5,B10010000);
-  maxOne(position,4,B10010000);
-  maxOne(position,3,B10010000);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterG(int position){
-
-  maxOne(position,7,B10011110); 
-  maxOne(position,6,B10011110);
-  maxOne(position,5,B10010010);
-  maxOne(position,4,B10000010);
-  maxOne(position,3,B11000110);
-  maxOne(position,2,B01111100);
-  maxOne(position,1,B00111000);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B00111000); 
+  maxOne(maxPosition,6,B01111100);
+  maxOne(maxPosition,5,B11000110);
+  maxOne(maxPosition,4,B10000010);
+  maxOne(maxPosition,3,B10000010);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterH(int position){
+void letterE(int maxPosition){
 
-  maxOne(position,7,B11111110); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B00010000);
-  maxOne(position,4,B00010000);
-  maxOne(position,3,B00010000);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterI(int position){
-
-  maxOne(position,7,B10000010); 
-  maxOne(position,6,B10000010);
-  maxOne(position,5,B11111110);
-  maxOne(position,4,B11111110);
-  maxOne(position,3,B10000010);
-  maxOne(position,2,B10000010);
-  maxOne(position,1,B00000000);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B10000010); 
+  maxOne(maxPosition,6,B10010010);
+  maxOne(maxPosition,5,B10010010);
+  maxOne(maxPosition,4,B10010010);
+  maxOne(maxPosition,3,B10010010);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterJ(int position){
+void letterF(int maxPosition){
 
-  maxOne(position,7,B11111100); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B10000010);
-  maxOne(position,4,B10000010);
-  maxOne(position,3,B00000010);
-  maxOne(position,2,B00001110);
-  maxOne(position,1,B00001100);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterK(int position){
-
-  maxOne(position,7,B10000010); 
-  maxOne(position,6,B11000110);
-  maxOne(position,5,B01101110);
-  maxOne(position,4,B00111100);
-  maxOne(position,3,B00011000);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B10000000); 
+  maxOne(maxPosition,6,B10010000);
+  maxOne(maxPosition,5,B10010000);
+  maxOne(maxPosition,4,B10010000);
+  maxOne(maxPosition,3,B10010000);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterL(int position){
+void letterG(int maxPosition){
 
-  maxOne(position,7,B00000010); 
-  maxOne(position,6,B00000010);
-  maxOne(position,5,B00000010);
-  maxOne(position,4,B00000010);
-  maxOne(position,3,B11111110);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B00000000);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterM(int position){
-
-  maxOne(position,7,B11111110); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B01110000);
-  maxOne(position,4,B00111000);
-  maxOne(position,3,B01110000);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B10011110); 
+  maxOne(maxPosition,6,B10011110);
+  maxOne(maxPosition,5,B10010010);
+  maxOne(maxPosition,4,B10000010);
+  maxOne(maxPosition,3,B11000110);
+  maxOne(maxPosition,2,B01111100);
+  maxOne(maxPosition,1,B00111000);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterN(int position){
+void letterH(int maxPosition){
 
-  maxOne(position,7,B11111110); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B00011100);
-  maxOne(position,4,B00111000);
-  maxOne(position,3,B01110000);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterO(int position){
-
-  maxOne(position,7,B01111100); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B10000010);
-  maxOne(position,4,B10000010);
-  maxOne(position,3,B10000010);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B01111100);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B11111110); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B00010000);
+  maxOne(maxPosition,4,B00010000);
+  maxOne(maxPosition,3,B00010000);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterP(int position){
+void letterI(int maxPosition){
 
-  maxOne(position,7,B01110000); 
-  maxOne(position,6,B11111000);
-  maxOne(position,5,B10001000);
-  maxOne(position,4,B10001000);
-  maxOne(position,3,B10001000);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterQ(int position){
-
-  maxOne(position,7,B01111010); 
-  maxOne(position,6,B11111100);
-  maxOne(position,5,B10001110);
-  maxOne(position,4,B10001010);
-  maxOne(position,3,B10000010);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B01111100);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B10000010); 
+  maxOne(maxPosition,6,B10000010);
+  maxOne(maxPosition,5,B11111110);
+  maxOne(maxPosition,4,B11111110);
+  maxOne(maxPosition,3,B10000010);
+  maxOne(maxPosition,2,B10000010);
+  maxOne(maxPosition,1,B00000000);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterR(int position){
+void letterJ(int maxPosition){
 
-  maxOne(position,7,B01110010); 
-  maxOne(position,6,B11110110);
-  maxOne(position,5,B10011110);
-  maxOne(position,4,B10001100);
-  maxOne(position,3,B10001000);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterS(int position){
-
-  maxOne(position,7,B00001100); 
-  maxOne(position,6,B01011110);
-  maxOne(position,5,B11010010);
-  maxOne(position,4,B10010010);
-  maxOne(position,3,B10010010);
-  maxOne(position,2,B11110110);
-  maxOne(position,1,B01100100);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B11111100); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B10000010);
+  maxOne(maxPosition,4,B10000010);
+  maxOne(maxPosition,3,B00000010);
+  maxOne(maxPosition,2,B00001110);
+  maxOne(maxPosition,1,B00001100);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterT(int position){
+void letterK(int maxPosition){
 
-  maxOne(position,7,B10000000); 
-  maxOne(position,6,B10000000);
-  maxOne(position,5,B11111110);
-  maxOne(position,4,B11111110);
-  maxOne(position,3,B10000000);
-  maxOne(position,2,B10000000);
-  maxOne(position,1,B00000000);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterU(int position){
-
-  maxOne(position,7,B11111100); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B00000010);
-  maxOne(position,4,B00000010);
-  maxOne(position,3,B00000010);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111100);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B10000010); 
+  maxOne(maxPosition,6,B11000110);
+  maxOne(maxPosition,5,B01101110);
+  maxOne(maxPosition,4,B00111100);
+  maxOne(maxPosition,3,B00011000);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterV(int position){
+void letterL(int maxPosition){
 
-  maxOne(position,7,B11110000); 
-  maxOne(position,6,B11111000);
-  maxOne(position,5,B00011100);
-  maxOne(position,4,B00001110);
-  maxOne(position,3,B00011100);
-  maxOne(position,2,B11111000);
-  maxOne(position,1,B11110000);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterW(int position){
-
-  maxOne(position,7,B11111110); 
-  maxOne(position,6,B11111110);
-  maxOne(position,5,B00011100);
-  maxOne(position,4,B00111000);
-  maxOne(position,3,B00011100);
-  maxOne(position,2,B11111110);
-  maxOne(position,1,B11111110);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B00000010); 
+  maxOne(maxPosition,6,B00000010);
+  maxOne(maxPosition,5,B00000010);
+  maxOne(maxPosition,4,B00000010);
+  maxOne(maxPosition,3,B11111110);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B00000000);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterX(int position){
+void letterM(int maxPosition){
 
-  maxOne(position,7,B11000110); 
-  maxOne(position,6,B11101110);
-  maxOne(position,5,B01111100);
-  maxOne(position,4,B00111000);
-  maxOne(position,3,B01111100);
-  maxOne(position,2,B11101110);
-  maxOne(position,1,B11000110);
-  maxOne(position,8,B00000000);
-
-}
-
-void letterY(int position){
-
-  maxOne(position,7,B11100000); 
-  maxOne(position,6,B11110000);
-  maxOne(position,5,B00011110);
-  maxOne(position,4,B00011110);
-  maxOne(position,3,B11110000);
-  maxOne(position,2,B11100000);
-  maxOne(position,1,B00000000);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B11111110); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B01110000);
+  maxOne(maxPosition,4,B00111000);
+  maxOne(maxPosition,3,B01110000);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void letterZ(int position){
+void letterN(int maxPosition){
 
-  maxOne(position,7,B11000010); 
-  maxOne(position,6,B11100010);
-  maxOne(position,5,B11110010);
-  maxOne(position,4,B10111010);
-  maxOne(position,3,B10011110);
-  maxOne(position,2,B10001110);
-  maxOne(position,1,B10000110);
-  maxOne(position,8,B00000000);
+  maxOne(maxPosition,7,B11111110); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B00011100);
+  maxOne(maxPosition,4,B00111000);
+  maxOne(maxPosition,3,B01110000);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
 
 }
 
-void Heart() {
+void letterO(int maxPosition){
+
+  maxOne(maxPosition,7,B01111100); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B10000010);
+  maxOne(maxPosition,4,B10000010);
+  maxOne(maxPosition,3,B10000010);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B01111100);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterP(int maxPosition){
+
+  maxOne(maxPosition,7,B01110000); 
+  maxOne(maxPosition,6,B11111000);
+  maxOne(maxPosition,5,B10001000);
+  maxOne(maxPosition,4,B10001000);
+  maxOne(maxPosition,3,B10001000);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterQ(int maxPosition){
+
+  maxOne(maxPosition,7,B01111010); 
+  maxOne(maxPosition,6,B11111100);
+  maxOne(maxPosition,5,B10001110);
+  maxOne(maxPosition,4,B10001010);
+  maxOne(maxPosition,3,B10000010);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B01111100);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterR(int maxPosition){
+
+  maxOne(maxPosition,7,B01110010); 
+  maxOne(maxPosition,6,B11110110);
+  maxOne(maxPosition,5,B10011110);
+  maxOne(maxPosition,4,B10001100);
+  maxOne(maxPosition,3,B10001000);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterS(int maxPosition){
+
+  maxOne(maxPosition,7,B00001100); 
+  maxOne(maxPosition,6,B01011110);
+  maxOne(maxPosition,5,B11010010);
+  maxOne(maxPosition,4,B10010010);
+  maxOne(maxPosition,3,B10010010);
+  maxOne(maxPosition,2,B11110110);
+  maxOne(maxPosition,1,B01100100);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterT(int maxPosition){
+
+  maxOne(maxPosition,7,B10000000); 
+  maxOne(maxPosition,6,B10000000);
+  maxOne(maxPosition,5,B11111110);
+  maxOne(maxPosition,4,B11111110);
+  maxOne(maxPosition,3,B10000000);
+  maxOne(maxPosition,2,B10000000);
+  maxOne(maxPosition,1,B00000000);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterU(int maxPosition){
+
+  maxOne(maxPosition,7,B11111100); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B00000010);
+  maxOne(maxPosition,4,B00000010);
+  maxOne(maxPosition,3,B00000010);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111100);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterV(int maxPosition){
+
+  maxOne(maxPosition,7,B11110000); 
+  maxOne(maxPosition,6,B11111000);
+  maxOne(maxPosition,5,B00011100);
+  maxOne(maxPosition,4,B00001110);
+  maxOne(maxPosition,3,B00011100);
+  maxOne(maxPosition,2,B11111000);
+  maxOne(maxPosition,1,B11110000);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterW(int maxPosition){
+
+  maxOne(maxPosition,7,B11111110); 
+  maxOne(maxPosition,6,B11111110);
+  maxOne(maxPosition,5,B00011100);
+  maxOne(maxPosition,4,B00111000);
+  maxOne(maxPosition,3,B00011100);
+  maxOne(maxPosition,2,B11111110);
+  maxOne(maxPosition,1,B11111110);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterX(int maxPosition){
+
+  maxOne(maxPosition,7,B11000110); 
+  maxOne(maxPosition,6,B11101110);
+  maxOne(maxPosition,5,B01111100);
+  maxOne(maxPosition,4,B00111000);
+  maxOne(maxPosition,3,B01111100);
+  maxOne(maxPosition,2,B11101110);
+  maxOne(maxPosition,1,B11000110);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterY(int maxPosition){
+
+  maxOne(maxPosition,7,B11100000); 
+  maxOne(maxPosition,6,B11110000);
+  maxOne(maxPosition,5,B00011110);
+  maxOne(maxPosition,4,B00011110);
+  maxOne(maxPosition,3,B11110000);
+  maxOne(maxPosition,2,B11100000);
+  maxOne(maxPosition,1,B00000000);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void letterZ(int maxPosition){
+
+  maxOne(maxPosition,7,B11000010); 
+  maxOne(maxPosition,6,B11100010);
+  maxOne(maxPosition,5,B11110010);
+  maxOne(maxPosition,4,B10111010);
+  maxOne(maxPosition,3,B10011110);
+  maxOne(maxPosition,2,B10001110);
+  maxOne(maxPosition,1,B10000110);
+  maxOne(maxPosition,8,B00000000);
+
+}
+
+void Heart(int maxPosition) {
   
-  maxOne(1,1,0); 
-  maxOne(1,2,16);
-  maxOne(1,3,56);
-  maxOne(1,4,124);
-  maxOne(1,5,254);
-  maxOne(1,6,238);
-  maxOne(1,7,68);
-  maxOne(1,8,0);
-  
-  delay(2000);
-  
-  maxOne(1,1,16);
-  maxOne(1,2,56);
-  maxOne(1,3,124);
-  maxOne(1,4,254);
-  maxOne(1,5,238);
-  maxOne(1,6,68);
-  maxOne(1,7,0);
-  maxOne(1,8,0);
+  maxOne(maxPosition,7,B00110000); 
+  maxOne(maxPosition,6,B01111000);
+  maxOne(maxPosition,5,B00111100);
+  maxOne(maxPosition,4,B00011110);
+  maxOne(maxPosition,3,B00111100);
+  maxOne(maxPosition,2,B01111000);
+  maxOne(maxPosition,1,B00110000);
+  maxOne(maxPosition,8,0);
+
 }
 
-void Smile(){
+void Smile(int maxPosition){
   
-  maxOne(2,7,56);
-  maxOne(2,6,68);
-  maxOne(2,5,130);
-  maxOne(2,4,0);
-  maxOne(2,3,108);
-  maxOne(2,2,108);
-  maxOne(2,1,0);
-  
-  delay(2000);
-  
-  maxOne(2,7,0);
-  maxOne(2,6,56);
-  maxOne(2,5,68);
-  maxOne(2,4,130);
-  maxOne(2,3,0);
-  maxOne(2,2,108);
-  maxOne(2,1,108);
+  maxOne(maxPosition,7,56);
+  maxOne(maxPosition,6,68);
+  maxOne(maxPosition,5,130);
+  maxOne(maxPosition,4,0);
+  maxOne(maxPosition,3,108);
+  maxOne(maxPosition,2,108);
+  maxOne(maxPosition,1,0);
+  maxOne(maxPosition,8,0);
 
 }
   
