@@ -50,7 +50,7 @@ using.
 //===============================================
 //                  Edit here
 
-char nameArr[] = "T d"; // Put your own name within the quotes!
+char nameArr[] = "LBE"; // Put your own name within the quotes!
 
 int maxInUse = 3;    //change this variable to set how many MAX7219's you'll use
 
